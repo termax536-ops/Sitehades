@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شمع تراپی | خانم حدیث مطوری</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Niconne&family=Vazirmatn:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #8B7355; /* قهوه‌ای روشن/بژ */
+            --secondary-color: #D4B996; /* بژ طلایی */
+            --accent-color: #C19A6B; /* قهوه‌ای طلایی */
+            --light-color: #FAF3E0; /* کرم بسیار روشن */
+            --dark-color: #5D4037; /* قهوه‌ای تیره */
+            --text-color: #4E342E;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* هدر و ناوبری */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            color: var(--accent-color);
+            font-size: 2rem;
+            margin-left: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Niconne', cursive;
+            font-size: 1.8rem;
+            color: var(--dark-color);
+        }
+
+        .logo-text span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* بخش هیرو */
+        .hero {
+            background: linear-gradient(rgba(250, 243, 224, 0.9), rgba(250, 243, 224, 0.8)), url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 180px 0 100px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            font-family: 'Niconne', cursive;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* بخش‌های محتوا */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-family: 'Niconne', cursive;
+        }
+
+        .section-title p {
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* سرویس‌ها */
+        .services {
+            background-color: var(--light-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        /* درباره */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        /* گالری */
+        .gallery {
+            background-color: var(--light-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* فوتر */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 70px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--secondary-color);
+            font-family: 'Niconne', cursive;
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* رسپانسیو */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--shadow);
+                padding: 20px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر و ناوبری -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-spa logo-icon"></i>
+                <div class="logo-text">شمع تراپی <span>حدیث مطوری</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#about">درباره من</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#gallery">گالری</a></li>
+                    <li><a href="#contact">تماس با من</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- بخش اصلی -->
+    <main>
+        <!-- هیرو -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>شمع تراپی با خانم حدیث مطوری</h1>
+                <p>تجربه‌ای آرامش‌بخش و درمانی از طریق هنر شمع‌سازی. در کارگاه‌های من، شما نه تنها شمع‌های زیبا می‌سازید، بلکه آرامش عمیقی برای ذهن و روح خود ایجاد می‌کنید.</p>
+                <a href="#contact" class="btn">رزرو جلسه مشاوره</a>
+            </div>
+        </section>
+
+        <!-- درباره -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>درباره من</h2>
+                    <p>حدیث مطوری، مدرک تخصصی شمع تراپی از آکادمی بین‌المللی هنرهای درمانی</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-img">
+                        <img src="a.png" alt="خانم حدیث مطوری">
+                    </div>
+                    <div class="about-text">
+                        <h3>سلام، من حدیث مطوری هستم</h3>
+                        <p>بیش از ۷ سال است که در زمینه شمع تراپی فعالیت دارم و به افراد زیادی کمک کرده‌ام تا از طریق این هنر درمانی، آرامش و تعادل را به زندگی خود بازگردانند.</p>
+                        <p>من معتقدم که شمع تراپی تنها یک هنر نیست، بلکه یک سفر درونی است. در کارگاه‌های من، شما یاد می‌گیرید که چگونه از طریق ترکیب رنگ‌ها، رایحه‌ها و اشکال، احساسات خود را بیان کرده و انرژی‌های مثبت را جذب کنید.</p>
+                        <p>مدرک‌ها و گواهینامه‌های من شامل: مدرک شمع تراپی پیشرفته از آکادمی لندن، گواهینامه آروماتراپی و رایحه درمانی، و گواهینامه روانشناسی رنگ‌ها می‌باشد.</p>
+                        <a href="#contact" class="btn">درباره کارگاه‌ها بیشتر بدانید</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- خدمات -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>خدمات من</h2>
+                    <p>کارگاه‌ها و دوره‌های تخصصی شمع تراپی برای سطوح مختلف</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1590736969954-7053e95fc2b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="کارگاه مقدماتی">
+                        </div>
+                        <div class="service-content">
+                            <h3>کارگاه مقدماتی شمع تراپی</h3>
+                            <p>آشنایی با اصول اولیه شمع سازی، انتخاب مواد اولیه، رنگ‌ها و رایحه‌های پایه. ساخت دو شمع ساده و زیبا در این کارگاه.</p>
+                            <a href="#contact" class="btn" style="margin-top: 15px;">ثبت نام در کارگاه</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="کارگاه پیشرفته">
+                        </div>
+                        <div class="service-content">
+                            <h3>کارگاه پیشرفته شمع تراپی</h3>
+                            <p>ساخت شمع‌های لایه‌ای، شمع‌های ژله‌ای و شمع‌های تزئینی پیچیده. ترکیب رایحه‌های درمانی برای اهداف خاص.</p>
+                            <a href="#contact" class="btn" style="margin-top: 15px;">ثبت نام در کارگاه</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="جلسات خصوصی">
+                        </div>
+                        <div class="service-content">
+                            <h3>جلسات خصوصی شمع تراپی</h3>
+                            <p>جلسات یک‌به‌یک برای افرادی که نیاز به فضای شخصی‌تری دارند. طراحی شمع براساس نیازهای فردی و اهداف درمانی.</p>
+                            <a href="#contact" class="btn" style="margin-top: 15px;">رزرو جلسه خصوصی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- گالری -->
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <div class="section-title">
+                    <h2>گالری آثار</h2>
+                    <p>نمونه‌ای از شمع‌های ساخته شده توسط هنرجویان و آثار شخصی من</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="شمع لایه‌ای">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="شمع رایحه‌ای">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1590736969954-7053e95fc2b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="شمع تزئینی">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="کارگاه شمع تراپی">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- فوتر -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>شمع تراپی حدیث مطوری</h3>
+                    <p>من به شما کمک می‌کنم تا از طریق هنر شمع‌سازی، آرامش درونی و تعادل روحی پیدا کنید. کارگاه‌های من فضایی امن برای کشف خلاقیت و درمان از طریق هنر فراهم می‌کنند.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>تماس با من</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، کوچه هنر</li>
+                        <li><i class="fas fa-phone"></i> ۰۹۱۲ ۱۲۳ ۴۵۶۷</li>
+                        <li><i class="fas fa-envelope"></i> info@hadithmowri.com</li>
+                        <li><i class="fas fa-clock"></i> روزهای شنبه تا چهارشنبه ۱۰ صبح تا ۶ عصر</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>عضویت در خبرنامه</h3>
+                    <p>برای اطلاع از جدیدترین کارگاه‌ها و دوره‌های آموزشی، ایمیل خود را وارد کنید.</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="ایمیل خود را وارد کنید" required style="width: 100%; padding: 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; margin-bottom: 15px;">
+                        <button type="submit" class="btn">عضویت در خبرنامه</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© کلیه حقوق برای شمع تراپی خانم حدیث مطوری محفوظ می‌باشد. ۱۴۰۳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // منو موبایل
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            if (mainNav.classList.contains('active')) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // بستن منو با کلیک روی لینک‌ها
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // فرم خبرنامه
+        const newsletterForm = document.getElementById('newsletterForm');
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`ایمیل ${email} با موفقیت در خبرنامه ثبت شد.`);
+            this.reset();
+        });
+        
+        // اسکرول نرم
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
